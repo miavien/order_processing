@@ -20,6 +20,7 @@ from order.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('order.urls')),
     path('accounts/', include('allauth.urls')),
     path('social-auth/', include('social_django.urls', namespace='social'))
 ]
