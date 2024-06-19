@@ -1,1 +1,25 @@
-<h1>Личный кабинет {{user.username }}</h1>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Личный кабинет {{ request.user.username }}</h1>
+        <h2>Ваши заказы</h2>
+        <ul>
+            {% for order in orders %}
+                <li>
+                    <p><strong>Содержание заказа:</strong> {{ order.content }}</p>
+                    <p><strong>Статус:</strong> {{ order.get_status_display }}</p>
+                </li>
+            {% empty %}
+                <li>У вас пока нет заказов.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+

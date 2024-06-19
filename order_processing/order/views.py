@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, ListView
 from .forms import *
 
 class OrderCreate(CreateView):
@@ -15,7 +15,10 @@ class OrderCreate(CreateView):
     def get_success_url(self):
         return reverse_lazy('profile')
 
-class Profile(TemplateView):
+class Profile(ListView):
+    model = Order
     template_name = 'profile.html'
+    context_object_name = 'orders'
 
-    # def get_context_data(self, **kwargs):
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)

@@ -8,9 +8,9 @@ class Order(models.Model):
     status_completed = 'Completed'
 
     STATUS_CHOICES = {
-        (status_pending, 'Pending'),
-        (status_processing, 'Processing'),
-        (status_completed, 'Completed'),
+        (status_pending, 'Принят'),
+        (status_processing, 'В процессе'),
+        (status_completed, 'Готов'),
     }
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
