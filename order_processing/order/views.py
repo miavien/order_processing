@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, ListView
+
+from order_processing import settings
 from .forms import *
 
 class OrderCreate(CreateView):
@@ -22,3 +24,4 @@ class Profile(ListView):
 
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
+
